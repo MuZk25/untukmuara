@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Untuk Muara Kelana 💗</title>
+<style>
+body{
+margin:0;font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+display:flex;justify-content:center;align-items:center;
+height:100vh;color:#333;
+}
+.card{
+background:rgba(255,255,255,.92);
+padding:35px;border-radius:25px;
+max-width:500px;text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+h1{color:#ff4d6d}
+button{
+padding:12px 22px;border:none;border-radius:12px;
+background:#ff4d6d;color:white;font-size:16px;cursor:pointer;
+}
+.slide{display:none}
+.active{display:block}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="slide active">
+    <h1>Hai, Muara Kelana 💗</h1>
+    <p>Ada sesuatu buat kamu...</p>
+    <button onclick="nextSlide()">Lanjut ➜</button>
+  </div>
+
+  <div class="slide">
+    <h1>Dari Azka Rizqi 🌷</h1>
+    <p>hai sayang makasih banyak yaa selama ini kamu udah mau memulai sama aku, mencoba hal hal seru bareng aku. aku cuman mau bilang kalo "aku sayang kamu banget" mungkin iya aku gasepinter kamu, aku juga ga selucu kamu dalam hal mengungkapkan rasa sayang ini. cuman yang perlu kamu tau, aku sayang kamu melebihi apapun beb, bahkan kalau dunia ga ngasih kita jalan untuk bareng/bersatu, aku mau buat jalan baru sama kamu demi kita bisa bersatu, pls sama aku selamanya ya sayang.💗🫶🏻</p>
+    <button onclick="nextSlide()">Lanjut ➜</button>
+  </div>
+
+  <div class="slide">
+    <h1>Pesan Buat Kamu 💌</h1>
+    <p style="font-size:24px;"><b>aku sayang kamu muna💗</b></p>
+    <p>✨</p>
+  </div>
+</div>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll(".slide");
+function nextSlide(){
+  slides[current].classList.remove("active");
+  current++;
+  if(current < slides.length){
+    slides[current].classList.add("active");
+  }
+}
+</script>
+</body>
+</html>
