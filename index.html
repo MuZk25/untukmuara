@@ -39,17 +39,17 @@ body{
 
 .progress-bar{
   width:100%;
-  height:4px;
-  background:#rgba(255,255,255,0.3);
+  height:6px;
+  background:rgba(255,255,255,0.3);
   margin-bottom:20px;
-  border-radius:2px;
+  border-radius:3px;
 }
 
 .progress-fill{
   height:100%;
   background:linear-gradient(90deg,#667eea,#764ba2);
   transition:width 0.3s ease;
-  border-radius:2px;
+  border-radius:3px;
 }
 
 .card{
@@ -87,6 +87,7 @@ body{
   align-items:center;
   animation:fadeIn 0.5s ease-in;
   min-height:500px;
+  position:relative;
 }
 
 .slide.active{
@@ -98,11 +99,64 @@ body{
   to{opacity:1}
 }
 
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.3); }
+  50% { transform: scale(1); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.emoji-bounce {
+  display:inline-block;
+  animation: bounce 2s infinite;
+}
+
+.emoji-heart {
+  display:inline-block;
+  animation: heartBeat 1.5s infinite;
+}
+
+.emoji-spin {
+  display:inline-block;
+  animation: spin 3s linear infinite;
+}
+
+.emoji-float {
+  display:inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
 h1{
   color:#764ba2;
-  font-size:32px;
+  font-size:36px;
   margin-bottom:20px;
   font-weight:700;
+  animation: slideUp 0.6s ease-out;
 }
 
 p{
@@ -110,16 +164,17 @@ p{
   line-height:1.8;
   font-size:16px;
   margin-bottom:15px;
+  animation: slideUp 0.8s ease-out;
 }
 
-img{
-  max-width:100%;
-  height:auto;
-  border-radius:15px;
-  margin:20px 0;
-  max-height:500px;
-  object-fit:cover;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
+.spotify-container {
+  margin: 30px 0;
+  animation: slideUp 1s ease-out;
+}
+
+iframe {
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
 }
 
 #qrcode{
@@ -129,6 +184,7 @@ img{
   display:inline-block;
   margin:20px 0;
   box-shadow:0 5px 20px rgba(0,0,0,.1);
+  animation: slideUp 0.7s ease-out;
 }
 
 .button-group{
@@ -178,6 +234,20 @@ button:active{
 .text-center {
   text-align: center;
 }
+
+.glow-text {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.confetti {
+  position: absolute;
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
@@ -191,8 +261,8 @@ button:active{
       <!-- SLIDE 1: QR CODE -->
       <div class="slide active">
         <div>
-          <h1>✨ Haii Muara ✨</h1>
-          <p style="font-size:18px;margin:20px 0;">Scan QR Code Ini Ya! 💗</p>
+          <h1><span class="emoji-bounce">✨</span> Haii Muara <span class="emoji-bounce">✨</span></h1>
+          <p style="font-size:18px;margin:20px 0;">Scan QR Code Ini Ya! <span class="emoji-heart">💗</span></p>
           <div id="qrcode"></div>
           <p style="color:#999;font-size:14px;margin-top:20px;">Atau klik tombol "Lanjut" di bawah</p>
         </div>
@@ -200,58 +270,39 @@ button:active{
 
       <!-- SLIDE 2: PESAN -->
       <div class="slide">
-        <div class="text-left" style="width:100%;">
-          <h1 style="text-align:center;margin-bottom:30px;">💌 Dari Azka Rizqi</h1>
-          <p>hai sayang makasih banyak yaa selama ini kamu udah mau memulai sama aku, mencoba hal hal seru bareng aku. aku cuman mau bilang kalo "aku sayang kamu banget" 💗</p>
-          <p style="margin-top:20px;">mungkin iya aku gasepinter kamu, tapi setiap hari aku berusaha buat membuat kamu tersenyum dan bahagia 😊</p>
+        <div class="text-left" style="width:100%; max-height:100%; overflow-y:auto;">
+          <h1 style="text-align:center;margin-bottom:30px;">💌 <span class="emoji-float">Dari Azka Rizqi</span></h1>
+          
+          <p>hai sayang <span class="emoji-heart">💗</span></p>
+          <p>makasih banyak yaa selama ini kamu udah mau memulai sama aku, mencoba hal hal seru bareng aku.</p>
+          
+          <p style="margin-top:20px;">aku cuman mau bilang kalo "aku sayang kamu banget" mungkin iya aku gasepinter kamu, tapi setiap hari aku berusaha buat membuat kamu tersenyum dan bahagia 😊</p>
+          
           <p style="margin-top:20px;">cuman yang perlu kamu tau, aku sayang kamu melebihi apapun beb, bahkan kalau dunia ga ngasih kita jalan untuk bareng/bersatu, aku mau buat jalan baru sama kamu demi kamu 🥺</p>
-          <p style="margin-top:30px;font-size:20px;color:#764ba2;font-weight:700;">pls sama aku selamanya ya sayang 💗🫶🏻</p>
+          
+          <p style="margin-top:40px;" class="glow-text">pls sama aku selamanya ya sayang 💗🫶🏻</p>
         </div>
       </div>
 
-      <!-- SLIDE 3: INTRO FOTO -->
+      <!-- SLIDE 3: MUSIK -->
       <div class="slide">
         <div>
-          <h1>📸 Foto-Foto Kita 📸</h1>
-          <p style="font-size:18px;margin:30px 0;">Mulai Dari Awal Kita Deket<br>Sampai Sekarangg ✨</p>
+          <h1>🎵 <span class="emoji-spin">🎶</span> Lagu Buat Kamu 🎵</h1>
+          <p style="font-size:14px; color:#999; margin:20px 0;">Dengerin sambil scroll pesan gua yaaa 💗</p>
+          <div class="spotify-container">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0Y7dCFSIdB9vJ8nnVIAfuv?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+          <p style="font-size:12px; color:#999; margin-top:20px;">Play itu lagu terus baca pesan gua hehe 🎧</p>
         </div>
       </div>
 
-      <!-- SLIDE 4-10: FOTOS -->
-      <div class="slide">
-        <img src="https://drive.google.com/uc?export=view&id=1msOPJi_MWHH9S2BX5WPgwUSU6bngNdJV" alt="Foto 1">
-      </div>
-
-      <div class="slide">
-        <img src="https://drive.google.com/uc?export=view&id=1eux_B52yBET2sIJ4fnAWs9emKadu1opF" alt="Foto 2">
-      </div>
-
-      <div class="slide">
-        <img src="https://drive.google.com/uc?export=view&id=1CTFyYzBhUtRbQtrkQpZBHRizvuFUJi9o" alt="Foto 3">
-      </div>
-
-      <div class="slide">
-        <img src="https://drive.google.com/uc?export=view&id=1Wb_xFFmIJg4XadVp0JMsUs5ApkObxnk-" alt="Foto 4">
-      </div>
-
-      <div class="slide">
-        <img src="https://drive.google.com/uc?export=view&id=1VIFTaRKQ9nVwkV_B8LeR6jGqa4J6RI3I" alt="Foto 5">
-      </div>
-
-      <div class="slide">
-        <img src="https://drive.google.com/uc?export=view&id=1a7CVDcjGz8JMQZ_MCD20kB9MWN6yfrRg" alt="Foto 6">
-      </div>
-
-      <div class="slide">
-        <img src="https://drive.google.com/uc?export=view&id=1VkE215Qk8-owocaATyEvX7V5bS7y04ZQ" alt="Foto 7">
-      </div>
-
-      <!-- SLIDE 11: PENUTUP -->
+      <!-- SLIDE 4: PENUTUP -->
       <div class="slide">
         <div>
-          <h1 style="font-size:36px;margin-bottom:20px;">💕 Aku Sayang Kamu 💕</h1>
-          <p style="font-size:18px;color:#764ba2;font-weight:600;">Terima Kasih Telah Ada Untukku 🥺</p>
-          <p style="margin-top:30px;font-size:16px;">Selamanya Sama Aku Yaa Sayang 🫶🏻</p>
+          <h1 style="font-size:40px;margin-bottom:20px;"><span class="emoji-heart">💕</span> Aku Sayang Kamu <span class="emoji-heart">💕</span></h1>
+          <p style="font-size:18px;color:#764ba2;font-weight:600;margin:30px 0;">Terima Kasih Telah Ada Untukku <span class="emoji-float">🥺</span></p>
+          <p style="margin-top:40px;font-size:18px;">Selamanya Sama Aku Yaa Sayang 🫶🏻</p>
+          <p style="margin-top:30px;font-size:24px;">I Love You <span class="emoji-bounce">💗</span></p>
         </div>
       </div>
     </div>
@@ -262,7 +313,7 @@ button:active{
     </div>
 
     <div class="counter">
-      <span id="slideCounter">1</span> / <span id="totalSlides">11</span>
+      <span id="slideCounter">1</span> / <span id="totalSlides">4</span>
     </div>
   </div>
 </div>
